@@ -1,33 +1,98 @@
--- Drop tables if they already exist (development only)
---
+-- ============================================
+-- Comic Database Schema v1
+-- ============================================
+
 DROP TABLE IF EXISTS owned_comics CASCADE;
 DROP TABLE IF EXISTS issues CASCADE;
 DROP TABLE IF EXISTS series CASCADE;
 DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS boxes CASCADE;
 
--- Publishers  
+-- ============================================
+-- Publishers
+-- ============================================
+
 CREATE TABLE publishers (
-    ...
+    publisher_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Series 
+-- ============================================
+-- Series
+-- ============================================
+
 CREATE TABLE series (
-    ...
+    series_id SERIAL PRIMARY KEY,
+
+    publisher_id INTEGER NOT NULL
+        REFERENCES publishers(publisher_id),
+
+    title VARCHAR(255) NOT NULL,
+
+    volume INTEGER DEFAULT 1,
+
+    start_year INTEGER
 );
 
--- Issues 
+-- ============================================
+-- Issues
+-- ============================================
+
 CREATE TABLE issues (
-    ...
+    issue_id SERIAL PRIMARY KEY,
+
+    series_id INTEGER NOT NULL
+        REFERENCES series(series_id),
+
+    issue_number VARCHAR(20) NOT NULL,
+
+    title VARCHAR(255),
+
+    cover_date DATE,
+
+    variant VARCHAR(100),
+
+    notes TEXT
 );
 
--- Boxes 
+-- ============================================
+-- Boxes
+-- ============================================
+
 CREATE TABLE boxes (
-    ...
+    box_id SERIAL PRIMARY KEY,
+
+    label VARCHAR(50) NOT NULL UNIQUE,
+
+    location VARCHAR(255)
 );
 
--- Owned Comics 
-CREATE TABLE Owned Comics(
-    ...
-);
+-- ============================================
+-- Owned Comics
+-- ============================================
 
+CREATE TABLE owned_comics (
+    owned_id SERIAL PRIMARY KEY,
+
+    issue_id INTEGER NOT NULL
+        REFERENCES issues(issue_id),
+
+    box_id INTEGER
+        REFERENCES boxes(box_id),
+
+    grade DECIMAL(3,1),
+
+    purchase_price NUMERIC(10,2),
+
+    purchase_date DATE,
+
+    estimated_value NUMERIC(10,2),
+
+    signed BOOLEAN DEFAULT FALSE,
+
+    certification_company VARCHAR(25),
+
+    certification_number VARCHAR(50),
+
+    notes TEXT
+);
