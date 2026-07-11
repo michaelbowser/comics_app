@@ -1,14 +1,16 @@
-import psycopg
+from db import get_connection
 
-conn = psycopg.connect("dbname=comic_db user=michael")
 
-cur = conn.cursor()
+def main():
+    conn = get_connection()
 
-cur.execute("SELECT * FROM publishers;")
-rows = cur.fetchall()
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM publishers;")
 
-for row in rows:
-    print(row)
+        for publisher in cur.fetchall():
+            print(publisher)
 
-cur.close()
-conn.close()
+    conn.close()
+
+    if__name__ == "__main__"
+    main
