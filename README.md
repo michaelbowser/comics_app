@@ -68,3 +68,31 @@ Tables:
   - Neovim 
   - Linux (Arch / Omarchy)
 
+#### Phases of development
+ - Phase 1 
+   - Install PostgreSQL
+   - Create db schema
+   - Connect Python to PostgreSQL
+ - Phase 2 
+   - Repo layer
+   - CRUD 
+   - Search by: title, publisher and issue number
+
+ - Phase 3 
+   - Collections stats 
+   - Value tracking 
+   - import/export
+
+ - Phase 4 
+   - Text-based interface
+   - Web interface
+   - Barcode support
+   - Cover image support 
+
+#### Author 
+
+ Michael Bowser
+ 
+
+   
+
