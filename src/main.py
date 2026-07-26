@@ -4,22 +4,55 @@ from repositories.publisher import (
     get_all_publishers,
 )
 
-def main():
-    print("Current publishers:\n")
+def display_menu():
+    print("\nComic Database")
+    print("_" * 30)
+    print("1. List publishers")
+    print("2. Add publisher")
+    print("3. Exit")
 
-    for publisher_id, name in get_all_publishers():
+def list_publishers():
+     publishers = get_all_publishers()
+
+     print("\nPublishers\n")
+
+     for publisher_id, name in publishers:
         print(f"{publisher_id}: {name}")
 
-    print("\nAdding Image Comics...\n")
+def create_publisher():
+     name = input("\nPublisher name: ").strip()
 
-    new_id = add_publisher("Image Comics")
+     if not name:
+        print("Publisher name cannot be empty.")
+        return 
 
-    print(f"Created publisher #{new_id}")
+     publisher_id = add_publisher(name)
 
-    print("\nUpdated publisher list:\n")
+     print(f"\nPublisher created with ID {publisher_id}")
 
-    for publisher_id, name in get_all_publishers():
-            print(f"{publisher_id}: {name}")
+def main():
+
+     while True:
+        display_menu()
+
+        choice = input("\nChoice: ").strip()
+
+        if choice == "1":
+            list_publishers()
+
+        elif choice == "2":
+            create_publisher()
+
+        elif choice == "3":
+            print("\nGoodbye!")
+            break
+
+        else:
+            print("\nInvalid choice.")
+
 
 if __name__ == "__main__":
     main()
+
+
+
