@@ -1,5 +1,5 @@
 
-from repositories.publisher import (
+""" from repositories.publisher import (
     add_publisher,
     get_all_publishers,
 )
@@ -54,5 +54,38 @@ def main():
 if __name__ == "__main__":
     main()
 
+"""
 
+from repositories.series import (
+    add_series,
+    get_all_series,
+)
+
+
+def main():
+
+    print("Current series:\n")
+
+    for series in get_all_series():
+        print(series)
+
+    print("\nAdding Batman...\n")
+
+    new_id = add_series(
+        publisher_id=2,
+        title="Batman",
+        volume=1,
+        start_year=1940,
+    )
+
+    print(f"Created series #{new_id}")
+
+    print("\nUpdated series:\n")
+
+    for series in get_all_series():
+        print(series)
+
+
+if __name__ == "__main__":
+    main()
 
