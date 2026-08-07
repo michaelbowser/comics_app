@@ -1,15 +1,20 @@
-
-""" from repositories.publisher import (
+from repositories.publisher import (
     add_publisher,
     get_all_publishers,
 )
+from repositories.series import (
+     add_series,
+     get_all_series,
+) 
 
 def display_menu():
     print("\nComic Database")
     print("_" * 30)
     print("1. List publishers")
     print("2. Add publisher")
-    print("3. Exit")
+    print("3. List series ")
+    print("4. Add series ")
+    print("5. Exit")
 
 def list_publishers():
      publishers = get_all_publishers()
@@ -30,31 +35,80 @@ def create_publisher():
 
      print(f"\nPublisher created with ID {publisher_id}")
 
+def list_series():
+
+    print("\nSeries\n")
+
+    for series_id, publisher, title, volume, start_year in get_all_series():
+
+        print(
+             f"{series_id}:"
+             f"{publisher} | "
+             f"{title} | "
+             f"Vol. {volume} | "
+             f"{start_year}"
+
+        )
+
+def create_series():
+     print("\nAvailable Publishers\n")
+
+     for publisher_id, name in get_all_publishers():
+         print(f"{publisher_id}: {name}")
+
+         publisher_id = int(input("\nPublisher ID: "))
+
+         title = input("Series Title: ").strip()
+
+         volume = int(input("Volume: "))
+
+         start_year = int(input("Start Year:"))
+
+         series_id = add_series(
+             publisher_id,
+             title,
+             volume,
+             start_year,
+         )
+
+         print(f"\nSeries created with ID {series_id}")
+
 def main():
 
-     while True:
-        display_menu()
+        while True:
+            display_menu()
+            
+            choice = input("\nChoice: ").strip()
 
-        choice = input("\nChoice: ").strip()
 
-        if choice == "1":
-            list_publishers()
+            match choice:
 
-        elif choice == "2":
-            create_publisher()
+                case "1":
+                    list_publishers()
 
-        elif choice == "3":
-            print("\nGoodbye!")
-            break
+                case "2":
+                    create_publisher()
 
-        else:
-            print("\nInvalid choice.")
+                case "3":
+                    list_series()
+
+                case "4":
+                    create_series()
+
+                case "5":
+                    print("\nGoodbye!")
+                    break
+
+                case _:
+                    print("\nInvalid choice")
+
+
 
 
 if __name__ == "__main__":
     main()
 
-"""
+
 
 from repositories.series import (
     add_series,
@@ -62,30 +116,4 @@ from repositories.series import (
 )
 
 
-def main():
-
-    print("Current series:\n")
-
-    for series in get_all_series():
-        print(series)
-
-    print("\nAdding Batman...\n")
-
-    new_id = add_series(
-        publisher_id=2,
-        title="Batman",
-        volume=1,
-        start_year=1940,
-    )
-
-    print(f"Created series #{new_id}")
-
-    print("\nUpdated series:\n")
-
-    for series in get_all_series():
-        print(series)
-
-
-if __name__ == "__main__":
-    main()
 
