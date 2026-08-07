@@ -1,13 +1,11 @@
-####  This is a personal comic book inventory/collection application built
-####  with Python and PostgresSQL.
-
-It has two primary purposes:
-
- 1. Practice development skills by building a personally practical
-    application from the ground up.
- 2. Track and estimate the value of my comic collection for potential sale.
 
 #### Project Goals
+This project was developed as a collaborative learning exercise using ChatGPT
+as a programming mentor and design assistant. I implemented the code, debugged
+the application, and made architectural decisions through an iterative
+discussion process. The goal of the project is both to build a useful comic
+inventory application and to deepen my understanding of Python, PostgreSQL,
+and backend software engineering.
 
   1. Python and Postgres integration
   2. Database build from scratch
@@ -90,7 +88,7 @@ Tables:
    - Cover image support 
 
 #### Author 
-
+ Chat GPT
  Michael Bowser
  
 
