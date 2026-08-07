@@ -1,3 +1,11 @@
+# Python Cache
 __pycache__/ 
+*.py[cod]
+
+# Env's
 .venv/
+
+# Environment variables
+.env 
+
 

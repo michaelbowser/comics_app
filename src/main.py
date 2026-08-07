@@ -110,10 +110,6 @@ if __name__ == "__main__":
 
 
 
-from repositories.series import (
-    add_series,
-    get_all_series,
-)
 
 
 
