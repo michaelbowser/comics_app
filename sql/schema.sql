@@ -39,21 +39,16 @@ CREATE TABLE series (
 -- ============================================
 
 CREATE TABLE issues (
-    issue_id SERIAL PRIMARY KEY,
+    issue_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    series_id INTEGER NOT NULL,
+    issue_number INTEGER NOT NULL,
+    publication_date DATE,
+    is_key_issue BOOLEAN NOT NULL DEFAULT FALSE,
+    variant TEXT,
 
-    series_id INTEGER NOT NULL
-        REFERENCES series(series_id),
-
-    issue_number VARCHAR(20) NOT NULL,
-
-    title VARCHAR(255),
-
-    cover_date DATE,
-
-    variant VARCHAR(100),
-
-    notes TEXT
-);
+    FOREIGN KEY (series_id)
+    REFERENCES series(series_id)
+ );
 
 -- ============================================
 -- Boxes
