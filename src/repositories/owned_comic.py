@@ -48,3 +48,25 @@ def add_owned_comic(
             )
 
             return cur.fetchone()[0]
+
+def get_all_owned_comics():
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT
+                    owned_id,
+                    issue_id,
+                    box_id,
+                    grade,
+                    purchase_price,
+                    purchase_date,
+                    estimated_value,
+                    signed,
+                    certification_company,
+                    certification_number,
+                    notes
+                FROM owned_comics
+                ORDER BY owned_id;
+            """)
+
+            return cur.fetchall()
