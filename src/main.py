@@ -1,3 +1,10 @@
+
+from repositories.issue import (
+    add_issue,
+    get_all_issues,
+    get_issues_by_series,
+)
+
 from repositories.publisher import (
     add_publisher,
     get_all_publishers,
@@ -14,7 +21,9 @@ def display_menu():
     print("2. Add publisher")
     print("3. List series ")
     print("4. Add series ")
-    print("5. Exit")
+    print("5. List issues ")
+    print("6. Add issues ")
+    print("7. Exit")
 
 def list_publishers():
      publishers = get_all_publishers()
@@ -73,34 +82,83 @@ def create_series():
 
          print(f"\nSeries created with ID {series_id}")
 
+def list_issues():
+    issues = get_all_issues()
+
+    print("\nIssues\n")
+
+    for issue_id, series_id, issue_number, publication_date, is_key_issue, variant in issues:
+        key_status = "Yes" if is_key_issue else "No"
+        variant_status = variant if variant else "None"
+
+        print(
+            f"Issue #{issue_number} | "
+            f"Published: {publication_date} | "
+            f"Key Issue: {key_status} | "
+            f"Variant: {variant_status}"
+        )   
+
+
+def create_issue():
+    
+    series_id = int(input("\nSeries_id : ").strip())
+
+    issue_number =int(input("\nIssue_number: ").strip())
+    
+    publication_date = input("\nPublication_date: ").strip()
+
+    key_issue = input("\nKey Issue? (y or n): ").strip().lower()
+    is_key_issue = key_issue == "y"
+ 
+    variant = input("\nVariant (press enter if none): ").strip()
+
+    if not variant:
+        variant = None
+    
+    issue_id = add_issue(
+        series_id,
+        issue_number,
+        publication_date,
+        is_key_issue,
+        variant,
+    )
+
+    print(f"\nIssue created with ID {issue_id}")
+
 def main():
 
-        while True:
-            display_menu()
+    while True:
+        display_menu()
             
-            choice = input("\nChoice: ").strip()
+        choice = input("\nChoice: ").strip()
 
 
-            match choice:
+        match choice:
 
-                case "1":
-                    list_publishers()
+            case "1":
+                list_publishers()
 
-                case "2":
-                    create_publisher()
+            case "2":
+                create_publisher()
 
-                case "3":
-                    list_series()
+            case "3":
+                list_series()
 
-                case "4":
-                    create_series()
+            case "4":
+                create_series()
+    
+            case "5":
+                list_issues()
 
-                case "5":
-                    print("\nGoodbye!")
-                    break
+            case "6":
+                create_issue()
 
-                case _:
-                    print("\nInvalid choice")
+            case "7":
+                print("\nGoodbye!")
+                break
+
+            case _:
+                print("\nInvalid choice")
 
 
 
