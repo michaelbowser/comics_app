@@ -54,19 +54,32 @@ def get_all_owned_comics():
         with conn.cursor() as cur:
             cur.execute("""
                 SELECT
-                    owned_id,
-                    issue_id,
-                    box_id,
-                    grade,
-                    purchase_price,
-                    purchase_date,
-                    estimated_value,
-                    signed,
-                    certification_company,
-                    certification_number,
-                    notes
-                FROM owned_comics
-                ORDER BY owned_id;
+                    o.owned_id,
+                    o.issue_id,
+                    s.title,
+                    i.issue_number,
+                    i.publication_date,
+                    i.is_key_issue,
+                    i.variant,
+                    o.box_id,
+                    b.label,
+                    b.location,
+                    o.grade,
+                    o.purchase_price,
+                    o.purchase_date,
+                    o.estimated_value,
+                    o.signed,
+                    o.certification_company,
+                    o.certification_number,
+                    o.notes
+                FROM owned_comics AS o
+                JOIN issues AS i
+                    ON o.issue_id = i.issue_id
+                JOIN series AS s 
+                    ON i.series_id = s.series_id
+                LEFT JOIN boxes AS b 
+                    on o.box_id = b.box_id 
+                ORDER BY o.owned_id;
             """)
 
             return cur.fetchall()

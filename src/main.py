@@ -1,4 +1,9 @@
 
+from repositories.owned_comic import (
+    add_owned_comic,
+    get_all_owned_comics,
+)
+
 from repositories.issue import (
     add_issue,
     get_all_issues,
@@ -125,6 +130,50 @@ def create_issue():
 
     print(f"\nIssue created with ID {issue_id}")
 
+def list_owned_comics():
+    owned_comics = get_all_owned_comics()
+
+    print("\nOwned Comics\n")
+
+    for (
+        owned_id,
+        issue_id,
+        title,
+        issue_number,
+        publication_date,
+        is_key_issue,
+        variant,
+        box_id,
+        box_label,
+        box_location,
+        grade,
+        purchase_price,
+        purchase_date,
+        estimated_value,
+        signed,
+        certification_company,
+        certification_number,
+        notes,
+    ) in owned_comics:
+
+        key_status = "Yes" if is_key_issue else "No"
+        variant_status = variant if variant else "None"
+        box_status = box_label if box_label else "Unassigned"
+        signed_status = "Yes" if signed else "No"
+
+        print(
+            f"{title} #{issue_number}\n"
+            f"  Published: {publication_date}\n"
+            f"  Key Issue: {key_status}\n"
+            f"  Variant: {variant_status}\n"
+            f"  Grade: {grade}\n"
+            f"  Purchase Price: ${purchase_price}\n"
+            f"  Purchase Date: {purchase_date}\n"
+            f"  Estimated Value: ${estimated_value}\n"
+            f"  Signed: {signed_status}\n"
+            f"  Box: {box_status}\n"
+            f"  Notes: {notes if notes else 'None'}\n"
+        )
 def main():
 
     while True:
