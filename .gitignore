@@ -8,4 +8,5 @@ __pycache__/
 # Environment variables
 .env 
 
-
+# Backup db
+comic_db_backup.sql

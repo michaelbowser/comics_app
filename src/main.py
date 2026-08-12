@@ -17,18 +17,19 @@ from repositories.publisher import (
 from repositories.series import (
      add_series,
      get_all_series,
-) 
-
+)
 def display_menu():
-    print("\nComic Database")
-    print("_" * 30)
+    print("\nComic Database\n")
+    print("---\n")
     print("1. List publishers")
     print("2. Add publisher")
-    print("3. List series ")
-    print("4. Add series ")
-    print("5. List issues ")
-    print("6. Add issues ")
-    print("7. Exit")
+    print("3. List series")
+    print("4. Add series")
+    print("5. List issues")
+    print("6. Add issue")
+    print("7. List owned comics")
+    print("8. Add owned comic")
+    print("9. Exit")
 
 def list_publishers():
      publishers = get_all_publishers()
@@ -174,6 +175,67 @@ def list_owned_comics():
             f"  Box: {box_status}\n"
             f"  Notes: {notes if notes else 'None'}\n"
         )
+
+def create_owned_comic():
+    issues = get_all_issues()
+
+    print("\nAvailable Issues\n")
+
+    for issue_id, series_id, issue_number, publication_date, is_key_issue, variant in issues:
+        print(f"{issue_id}: Issue #{issue_number} ({publication_date})")
+
+    issue_id = int(input("\nIssue ID: "))
+    box_input = input("\nBox ID (press Enter if unassigned): ").strip()
+    box_id = int(box_input) if box_input else None
+
+    grade_input = input("\nGrade: ").strip()
+    grade = float(grade_input)
+
+    purchase_price = float(input("\nPurchase price: ").strip())
+
+    purchase_date = input("\nPurchase date (YYYY-MM-DD): ").strip()
+
+    estimated_value = float(input("\nEstimated value: ").strip())
+
+    signed_input = input("\nSigned? (y or n): ").strip().lower()
+    signed = signed_input == "y"
+
+    certification_company = input(
+        "\nCertification company (press Enter if none): "
+    ).strip()
+
+    if not certification_company:
+        certification_company = None
+
+    certification_number = input(
+        "\nCertification number (press Enter if none): "
+    ).strip()
+
+    if not certification_number:
+        certification_number = None
+
+    notes = input(
+        "\nNotes (press Enter if none): "
+    ).strip()
+
+    if not notes:
+        notes = None 
+
+    owned_id = add_owned_comic(
+        issue_id,
+        box_id,
+        grade,
+        purchase_price,
+        purchase_date,
+        estimated_value,
+        signed,
+        certification_company,
+        certification_number,
+        notes,
+    )
+    print(f"\nOwned comic created with ID {owned_id}")
+
+
 def main():
 
     while True:
@@ -203,6 +265,12 @@ def main():
                 create_issue()
 
             case "7":
+                list_owned_comics()
+
+            case "8":
+                create_owned_comic()
+
+            case "9":
                 print("\nGoodbye!")
                 break
 

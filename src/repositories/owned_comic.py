@@ -83,3 +83,4 @@ def get_all_owned_comics():
             """)
 
             return cur.fetchall()
+
