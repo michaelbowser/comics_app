@@ -11,7 +11,7 @@ def get_all_issues():
                     i.issue_id,
                     i.series_id,
                     i.issue_number,
-                    i.publication_date,
+                    i.publication_year,
                     i.is_key_issue,
                     i.variant
                 FROM issues AS i 
@@ -19,7 +19,7 @@ def get_all_issues():
                     ON i.series_id = s.series_id
                 ORDER BY 
                     s.series_id,
-                    i.issue_number;
+                    i.issue_id;
              """)
 
             return cur.fetchall()
@@ -33,7 +33,7 @@ def get_issues_by_series(series_id):
                     i.issue_id,
                     i.series_id,
                     i.issue_number,
-                    i.publication_date,
+                    i.publication_year,
                     i.is_key_issue,
                     i.variant
                 FROM issues AS i 
@@ -57,7 +57,7 @@ def add_issue(series_id, issue_number, publication_date, is_key_issue,
                 (
                     series_id,
                     issue_number,
-                    publication_date,
+                    publication_year,
                     is_key_issue,
                     variant
             )
@@ -67,7 +67,7 @@ def add_issue(series_id, issue_number, publication_date, is_key_issue,
             (
                 series_id,
                 issue_number,
-                publication_date,
+                publication_year,
                 is_key_issue,
                 variant
                 ),
