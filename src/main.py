@@ -93,13 +93,13 @@ def list_issues():
 
     print("\nIssues\n")
 
-    for issue_id, series_id, issue_number, publication_date, is_key_issue, variant in issues:
+    for issue_id, series_id, issue_number, publication_year, is_key_issue, variant in issues:
         key_status = "Yes" if is_key_issue else "No"
         variant_status = variant if variant else "None"
 
         print(
             f"Issue #{issue_number} | "
-            f"Published: {publication_date} | "
+            f"Published: {publication_year} | "
             f"Key Issue: {key_status} | "
             f"Variant: {variant_status}"
         )   
@@ -111,7 +111,7 @@ def create_issue():
 
     issue_number =int(input("\nIssue_number: ").strip())
     
-    publication_date = input("\nPublication_date: ").strip()
+    publication_year = input("\npublication_year: ").strip()
 
     key_issue = input("\nKey Issue? (y or n): ").strip().lower()
     is_key_issue = key_issue == "y"
@@ -124,7 +124,7 @@ def create_issue():
     issue_id = add_issue(
         series_id,
         issue_number,
-        publication_date,
+        publication_year,
         is_key_issue,
         variant,
     )
@@ -141,7 +141,7 @@ def list_owned_comics():
         issue_id,
         title,
         issue_number,
-        publication_date,
+        publication_year,
         is_key_issue,
         variant,
         box_id,
@@ -164,7 +164,7 @@ def list_owned_comics():
 
         print(
             f"{title} #{issue_number}\n"
-            f"  Published: {publication_date}\n"
+            f"  Published: {publication_year}\n"
             f"  Key Issue: {key_status}\n"
             f"  Variant: {variant_status}\n"
             f"  Grade: {grade}\n"
@@ -181,8 +181,8 @@ def create_owned_comic():
 
     print("\nAvailable Issues\n")
 
-    for issue_id, series_id, issue_number, publication_date, is_key_issue, variant in issues:
-        print(f"{issue_id}: Issue #{issue_number} ({publication_date})")
+    for issue_id, series_id, issue_number, publication_year, is_key_issue, variant in issues:
+        print(f"{issue_id}: Issue #{issue_number} ({publication_year})")
 
     issue_id = int(input("\nIssue ID: "))
     box_input = input("\nBox ID (press Enter if unassigned): ").strip()

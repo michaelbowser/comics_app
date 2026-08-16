@@ -4,15 +4,20 @@
 
 ## Project Goal
 
-Build a production-quality comic book inventory application while learning professional backend software development practices.
-
-Rather than focusing only on writing code, the project emphasizes understanding architecture, debugging, database design, and software engineering principles.
+ - Practice Python and SQL 
+ - Learn, and make mistakes, designing a code database
+ - Debug, Debug, Debug
+ - Create a project that will bring me value, personally and
+    professionally.
+ - Work without LLM assistance. ChatGPT was used in conjunction until
+    August 15, 2026. Db and code generally laid out. Many, Many bugs.
+    Working without assistance going forward to refine and develop
+    skills.
 
 ---
 
 ## Session 1
 
-### Accomplishments
 
 * Installed PostgreSQL
 * Created database
@@ -30,7 +35,6 @@ Rather than focusing only on writing code, the project emphasizes understanding 
 
 ## Session 2
 
-### Accomplishments
 
 * Connected Python to PostgreSQL using psycopg.
 * Built reusable database connection function.
@@ -46,7 +50,6 @@ Rather than focusing only on writing code, the project emphasizes understanding 
 
 ## Session 3
 
-### Accomplishments
 
 * Built Publisher repository.
 * Built Series repository.
@@ -63,7 +66,6 @@ Rather than focusing only on writing code, the project emphasizes understanding 
 
 ## Session 4
 
-### Accomplishments
 
 * Improved debugging workflow.
 * Built application architecture documentation.
@@ -78,35 +80,17 @@ Rather than focusing only on writing code, the project emphasizes understanding 
 
 ---
 
-# Mental Models Developed
-
+# Observations:
 * A function should have one primary responsibility.
 * The controller decides what happens next.
 * Repositories perform database work.
 * PostgreSQL owns persistent data.
 * Data flows through layers and returns through the same layers.
+* Understand *why* a design exists.
+* Be aware of how debugging affects more than the layer that you're
+working on.
+* Build a function or feature at at time, verify for specific function
+and edge cases.
 
 ---
-
-# Personal Observations
-
-Patterns noticed while building this project:
-
-* Understanding *why* a design exists is more valuable than memorizing syntax.
-* Debugging improves when the application is viewed as interacting layers.
-* Small, incremental features are easier to build, understand, and test than large changes.
-
----
-
-# Future Reflections
-
-As the project grows, continue documenting:
-
-* New architectural decisions
-* Debugging discoveries
-* Database improvements
-* Lessons learned
-* Ideas for future refactoring
-
-This journal is intended for my future self. It should explain not only what changed, but why the change was made.
 

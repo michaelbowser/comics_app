@@ -46,7 +46,7 @@ def get_issues_by_series(series_id):
             return cur.fetchall()
 
 
-def add_issue(series_id, issue_number, publication_date, is_key_issue,
+def add_issue(series_id, issue_number, publication_year, is_key_issue,
               variant):
     with get_connection() as conn:
         with conn.cursor() as cur:

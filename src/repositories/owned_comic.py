@@ -58,7 +58,7 @@ def get_all_owned_comics():
                     o.issue_id,
                     s.title,
                     i.issue_number,
-                    i.publication_date,
+                    i.publication_year,
                     i.is_key_issue,
                     i.variant,
                     o.box_id,
