@@ -66,27 +66,27 @@ def list_series():
         )
 
 def create_series():
-     print("\nAvailable Publishers\n")
+    print("\nAvailable Publishers\n")
 
-     for publisher_id, name in get_all_publishers():
-         print(f"{publisher_id}: {name}")
+    for publisher_id, name in get_all_publishers():
+        print(f"{publisher_id}: {name}")
 
-         publisher_id = int(input("\nPublisher ID: "))
+    publisher_id = int(input("\nPublisher ID: "))
 
-         title = input("Series Title: ").strip()
+    title = input("Series Title: ").strip()
 
-         volume = int(input("Volume: "))
+    volume = int(input("Volume: "))
 
-         start_year = int(input("Start Year:"))
+    start_year = int(input("Start Year:"))
 
-         series_id = add_series(
-             publisher_id,
-             title,
-             volume,
-             start_year,
-         )
+    series_id = add_series(
+        publisher_id,
+        title,
+        volume,
+        start_year,
+    )
 
-         print(f"\nSeries created with ID {series_id}")
+    print(f"\nSeries created with ID {series_id}")
 
 def list_issues():
     issues = get_all_issues()
