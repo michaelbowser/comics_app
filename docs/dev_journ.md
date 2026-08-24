@@ -93,4 +93,14 @@ working on.
 and edge cases.
 
 ---
+### Features to be added:
+ *  (LONG TERM)Create linkage to add publisher, series, issue and owned comic at
+ same time.
+ * when adding issue, upon series_id, have list of series display. 
+ * On available issues choice from add issues, avaiable issues should
+ list the full database identify
+ * For owned comic, provide None parameter for purchase date and
+ purchase price.
+ * For list owned comics, re format so only series title and issue
+ number show (top line)
 

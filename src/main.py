@@ -191,9 +191,9 @@ def create_owned_comic():
     grade_input = input("\nGrade: ").strip()
     grade = float(grade_input)
 
-    purchase_price = float(input("\nPurchase price: ").strip())
-
-    purchase_date = input("\nPurchase date (YYYY-MM-DD): ").strip()
+    purchase_price = float(input("\nPurchase price: (press 0 if none) ").strip())
+    
+    purchase_date = input("\nPurchase date (YYYY-MM-DD):(press 0 if none)  ").strip()
 
     estimated_value = float(input("\nEstimated value: ").strip())
 
