@@ -191,7 +191,13 @@ def create_owned_comic():
     grade_input = input("\nGrade: ").strip()
     grade = float(grade_input)
 
-    purchase_price = float(input("\nPurchase price: (press 0 if none) ").strip())
+    purchase_input = input("\nPurchase price: (Enter none if not known ) ").strip()
+
+    if purchase_input.lower() == 'none':
+        purchase_price = None
+    else:
+        purchase_price = float(purchase_input)
+
     
     purchase_date = input("\nPurchase date (YYYY-MM-DD):(press 0 if none)  ").strip()
 
