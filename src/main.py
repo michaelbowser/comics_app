@@ -199,8 +199,12 @@ def create_owned_comic():
         purchase_price = float(purchase_input)
 
     
-    purchase_date = input("\nPurchase date (YYYY-MM-DD):(press 0 if none)  ").strip()
+    purchase_date_input = input("\nPurchase date (YYYY-MM-DD):(press 0 if none)  ").strip()
 
+    if purchase_date_input.lower() == 'none':
+        purchase_date = None
+    else:
+        purchase_date = purchase_input
     estimated_value = float(input("\nEstimated value: ").strip())
 
     signed_input = input("\nSigned? (y or n): ").strip().lower()
